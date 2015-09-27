@@ -1,0 +1,54 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <link href="stylesheets/main.css" rel="stylesheet">
+  <title>IT 411 - Jennifer Kania - Lexicographic</title>
+  <script src="https://use.edgefonts.net/source-sans-pro:n4,i4,n6,i6:all.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+      var words = [];
+      
+      function display_list() { 
+       var word = $("input#word").val();
+          if (word == 'end' || word == 'End') {  
+              words.sort();
+                 $("div#output").html("<h2>The alphabetized list is " + words.join(", ") + "</h2>");
+          }
+          else {
+              words.push(word);
+          }   
+              $("input#word").val("");
+              $("input#word").focus();
+        } 
+
+    $(document).ready(function() {
+      $("input#word").focus();  
+        
+      $("button#enterwords").click(function() { 
+           display_list();
+        });
+        
+        $("input#word").keypress(function(e) {
+	    if(e.which == 13) {
+            display_list();
+        }     
+        });            
+      });
+
+  </script>
+</head>
+<body>
+  <h1>IT 411 - Jennifer Kania - A3 - Lexicographic</h1>
+  <h2>Sorts the list of words </h2>
+  <hr />
+  <p>Enter a list of words, 1 at a time.  Enter the word "end" as the last word when your list is complete.</p>
+    <div>
+  <input type="text" id="word">
+  <button id="enterwords">Enter a word</button>
+      </div>
+  <div id="output"></div>
+    <div class="footer">
+    <p>Created by Jennifer Kania</p>
+  </div>
+</body>
+</html>
